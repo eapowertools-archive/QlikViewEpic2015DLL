@@ -93,7 +93,7 @@ namespace QlikSenseEpic2015
 		public string GetURL()
 		{
 			byte[] iv = Encoding.ASCII.GetBytes("0000000000000000");
-			byte[] sharedSecret = Encoding.ASCII.GetBytes(key);
+			byte[] sharedSecret = Encoding.ASCII.GetBytes("ABCDEFG123456789");
 			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptStringToBytes_Aes(BiUserId + "|" + handshake, sharedSecret, iv)));
 			return finalURL;
 		}
