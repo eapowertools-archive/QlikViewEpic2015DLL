@@ -92,7 +92,9 @@ namespace QlikSenseEpic2015
 		}
 		public string GetURL()
 		{
-			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.OpenSSLEncrypt(BiUserId + "|" + handshake, key)));
+			byte[] iv = Encoding.ASCII.GetBytes("0000000000000000");
+			byte[] sharedSecret = Encoding.ASCII.GetBytes(key);
+			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptStringToBytesAes(BiUserId + "|" + handshake, sharedSecret, iv)));
 			return finalURL;
 		}
 		public bool IsLoggedIn()

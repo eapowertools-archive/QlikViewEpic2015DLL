@@ -64,7 +64,7 @@ namespace Encryptor
 			md5 = null;
 		}
 
-		static byte[] EncryptStringToBytesAes(string plainText, byte[] key, byte[] iv)
+		public byte[] EncryptStringToBytesAes(string plainText, byte[] key, byte[] iv)
 		{
 			// Check arguments.
 			if (plainText == null || plainText.Length <= 0)
