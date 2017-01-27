@@ -7,3 +7,12 @@ f:\my documents\visual studio 2015\Projects\QlikViewEpic2015\QlikViewEpic2015\ob
 f:\my documents\visual studio 2015\Projects\QlikViewEpic2015\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.dll
 f:\my documents\visual studio 2015\Projects\QlikViewEpic2015\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.pdb
 f:\my documents\visual studio 2015\Projects\QlikViewEpic2015\QlikViewEpic2015\bin\Debug\QlikViewEpic2015.tlb
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\bin\Debug\QlikViewEpic2015.dll
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\bin\Debug\QlikViewEpic2015.pdb
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.csprojResolveAssemblyReference.cache
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\Interop.EBIFoundation82.dll
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\Interop.VBA.dll
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.csproj.ResolveComReference.cache
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.dll
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\obj\Debug\QlikViewEpic2015.pdb
+F:\My Documents\_Git\QlikViewEpic2015DLL\QlikViewEpic2015\bin\Debug\QlikViewEpic2015.tlb

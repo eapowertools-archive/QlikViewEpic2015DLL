@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="byteEncryptor.cs" />
     <Compile Include="Encryptor.cs" />
     <Compile Include="QlikSessionMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

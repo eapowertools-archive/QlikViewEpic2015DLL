@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using QlikSenseEpic2015;
 using System.Runtime.InteropServices;
 using EBIFoundation82;
-using Encryptor;
+using ByteEncryptor;
 using System.Security;
 using System.Reflection;
 using System.IO;
@@ -21,8 +21,9 @@ namespace QlikSenseEpic2015
 	public class QlikSessionMgr : IBISessionManager
 	{
 		private static string KEY_FILENAME = Path.Combine(getDirectory, "qlikviewepic2015.config");
-		private AESEncrypt Encryptor;
-		private EBIFoundation82.IBIConfiguration BIConfiguration;
+		private AESEncrypter Encryptor;
+        private String encryptedString;
+        private EBIFoundation82.IBIConfiguration BIConfiguration;
 		string QlikServerUrl = "";
 		string BiUserId = "";
 		string handshake = "";
@@ -47,7 +48,7 @@ namespace QlikSenseEpic2015
 			{
 				throw new FileNotFoundException(string.Format("Could not read key value pair 'key' from '{0}'.", KEY_FILENAME));
 			}
-			Encryptor = new AESEncrypt();
+			Encryptor = new AESEncrypter("ABCDEFG123456789");
 
 		}
 
@@ -94,7 +95,7 @@ namespace QlikSenseEpic2015
 		{
 			byte[] iv = Encoding.ASCII.GetBytes("0000000000000000");
 			byte[] sharedSecret = Encoding.ASCII.GetBytes("ABCDEFG123456789");
-			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptStringToBytes_Aes(BiUserId + "|" + handshake, sharedSecret, iv)));
+			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptString(BiUserId, sharedSecret, iv)));
 			return finalURL;
 		}
 		public bool IsLoggedIn()
@@ -110,7 +111,6 @@ namespace QlikSenseEpic2015
 			BIConfiguration = (EBIFoundation82.IBIConfiguration)value;
 			QlikServerUrl = BIConfiguration.get_BIURL();
 			BiUserId = BIConfiguration.get_BIUserName();
-			handshake = BIConfiguration.get_BIClusterName();
 
 		}
 
