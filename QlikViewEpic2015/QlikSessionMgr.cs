@@ -28,6 +28,7 @@ namespace QlikSenseEpic2015
 		string BiUserId = "";
 		string handshake = "";
 		string key = "";
+        string iv = "";
 
 
 		public QlikSessionMgr()
@@ -41,14 +42,19 @@ namespace QlikSenseEpic2015
 					{
 						key = line.Substring(4);
 					}
+
+                    if(line.StartsWith("iv="))
+                    {
+                        iv = line.Substring(3);
+                    }
 				}
 			}
 
-			if (string.IsNullOrWhiteSpace(key))
+			if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(iv))
 			{
-				throw new FileNotFoundException(string.Format("Could not read key value pair 'key' from '{0}'.", KEY_FILENAME));
+				throw new FileNotFoundException(string.Format("Could not read key value pair 'key' or 'iv' from '{0}'.", KEY_FILENAME));
 			}
-			Encryptor = new AESEncrypter("ABCDEFG123456789");
+			Encryptor = new AESEncrypter(key);
 
 		}
 
@@ -93,9 +99,9 @@ namespace QlikSenseEpic2015
 		}
 		public string GetURL()
 		{
-			byte[] iv = Encoding.ASCII.GetBytes("0000000000000000");
-			byte[] sharedSecret = Encoding.ASCII.GetBytes("ABCDEFG123456789");
-			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptString(BiUserId, sharedSecret, iv)));
+			byte[] ivValue = Encoding.ASCII.GetBytes(iv);
+			byte[] sharedSecret = Encoding.ASCII.GetBytes(key);
+			string finalURL = string.Format("{0}//qvajaxzfc/epicwebticket.aspx?token={1}", QlikServerUrl, HttpUtility.UrlEncode(Encryptor.EncryptString(BiUserId, sharedSecret, ivValue)));
 			return finalURL;
 		}
 		public bool IsLoggedIn()
