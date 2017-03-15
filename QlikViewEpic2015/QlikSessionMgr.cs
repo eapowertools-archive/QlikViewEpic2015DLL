@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QlikSenseEpic2015;
+using QlikViewEpic2015;
 using System.Runtime.InteropServices;
 using EBIFoundation82;
 using ByteEncryptor;
@@ -12,7 +12,7 @@ using System.Reflection;
 using System.IO;
 using System.Web;
 
-namespace QlikSenseEpic2015
+namespace QlikViewEpic2015
 {
 	[ComVisible(true)]
 	[Guid("242746BA-B253-4D3F-B6DD-471EFFEDD33C")]
